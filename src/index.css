@@ -1,10 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Permanent+Marker&display=swap");
 
+/* some global variables */
+:root {
+  --mainBlue: #2a2a72;
+  --lightBlue: #009ffd;
+  --mainWhite: #f3f3f3;
+  --mainDark: #232528;
+  --mainYellow: #faa400;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Oswald", sans-serif !important;
+  background: var(--mainWhite);
+  color: var(--mainDark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -140,4 +148,15 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* text colors */
+.text-bright {
+  color: var(--lightBlue);
+}
+.text-blue {
+  color: var(--mainBlue);
+}
+.text-title {
+  font-family: "Permanent Marker", cursive;
 }
