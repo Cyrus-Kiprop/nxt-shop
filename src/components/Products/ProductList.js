@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Product from "./Product";
 
 export default function ProductList() {
+  const [state, setState] = useState();
   return (
-    <div>
-      <h2>Hello from the product list</h2>
-      <Product />
-    </div>
+    <>
+      <div className="py-5">
+        <div className=" container"></div>
+      </div>
+    </>
   );
 }
