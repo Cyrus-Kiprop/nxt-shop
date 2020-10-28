@@ -162,3 +162,7 @@ table {
   letter-spacing: 0.3rem;
   text-transform: uppercase;
 }
+
+.App {
+  background: whitesmoke;
+}

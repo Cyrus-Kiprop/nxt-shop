@@ -9,8 +9,11 @@ function ProductProvider({ children }) {
 
   useEffect(() => {
     setProducts(storeProducts);
+  }, []);
+
+  useEffect(() => {
     setDetailProducts(detailProduct);
-  }, [products, detailProduct]);
+  }, []);
 
   const handleDetail = () => {
     console.log("hello from detail");
