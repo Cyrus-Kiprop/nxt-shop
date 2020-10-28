@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import { ProductConsumer } from "../../context";
 import PropTypes from "prop-types";
 
-export default function Product({
-  product: { id, title, img, price, inCart },
-}) {
+export default function Product({ product }) {
+  const { id, title, img, price, inCart } = product;
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div className="card">
@@ -14,7 +13,7 @@ export default function Product({
           className="img-container p-5"
           onClick={() => console.log("you clicked me")}
         >
-          <Link to="/details">
+          <Link to="/product-info">
             <img src={img} alt="product-img" className="card-img-top" />
           </Link>
 
