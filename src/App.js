@@ -9,6 +9,7 @@ import Product from "./components/Products/Product";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar/Navbar";
 import Details from "./components/Detail/Details";
+import Modal from "./components/Modal";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
+        <Modal />
       </Router>
     </div>
   );

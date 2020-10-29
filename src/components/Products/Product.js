@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 export default function Product({ product }) {
   const { id, title, img, price, inCart } = product;
+  console.log(id);
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div className="card">
@@ -23,7 +24,10 @@ export default function Product({ product }) {
                 <button
                   className="cart-btn"
                   disabled={inCart ? true : false}
-                  onClick={() => value.addToCart(id)}
+                  onClick={() => {
+                    value.addToCart(value.id);
+                    value.openModal(value.id);
+                  }}
                 >
                   {inCart ? (
                     <p className="text-capitalize mb-0">in Cart</p>

@@ -9,8 +9,7 @@ function Details() {
     <ProductConsumer>
       {(value) => {
         const { id, company, img, info, price, title, inCart } = value.product;
-
-        console.log(value.detailProduct);
+        console.log(value);
         return (
           <div className="container py-5">
             <div className="row">
@@ -42,14 +41,17 @@ function Details() {
                 <div>
                   <Link to="/">
                     <ButtonContainer>back to products</ButtonContainer>
-                    <ButtonContainer
-                      disabled={inCart ? true : false}
-                      cart={true}
-                      onClick={() => value.addToCart(id)}
-                    >
-                      {inCart ? "inCart" : "add to cart"}
-                    </ButtonContainer>
                   </Link>
+                  <ButtonContainer
+                    disabled={inCart ? true : false}
+                    cart={true}
+                    onClick={() => {
+                      value.addToCart(id);
+                      value.openModal(id);
+                    }}
+                  >
+                    {inCart ? "inCart" : "add to cart"}
+                  </ButtonContainer>
                 </div>
               </div>
             </div>

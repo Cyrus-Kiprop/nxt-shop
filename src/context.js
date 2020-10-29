@@ -48,13 +48,15 @@ function ProductProvider({ children }) {
     product.total = price;
     setProducts(tempProducts);
     setCart(tempProducts);
-    console.log(cart);
   };
 
-  const openModal = (id) => {
-    const product = this.getItem(id);
+  const openModal = (id = 1) => {
+    const product = getItem(id);
     setModalProduct(product);
+    setModalOpen(true);
   };
+
+  const closeModal = () => setModalOpen(false);
 
   return (
     <ProductContext.Provider
@@ -67,6 +69,9 @@ function ProductProvider({ children }) {
         cart,
         modalOPen: true,
         modalProduct: detailProduct,
+        closeModal,
+        openModal,
+        getItem,
       }}
     >
       {children}
