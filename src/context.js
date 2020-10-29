@@ -6,21 +6,54 @@ const ProductContext = createContext();
 function ProductProvider({ children }) {
   const [products, setProducts] = useState(() => storeProducts);
   const [detailProducts, setDetailProducts] = useState(() => detailProduct);
+  const [product, setProduct] = useState({});
+  const [cart, setCart] = useState();
+  const [modalProduct, setModalProduct] = useState();
+  const [modalOPen, setModalOpen] = useState();
 
-  useEffect(() => {
-    setProducts(storeProducts);
-  }, []);
+  // patch the state
 
-  useEffect(() => {
-    setDetailProducts(detailProduct);
-  }, []);
-
-  const handleDetail = () => {
-    console.log("hello from detail");
+  const populateState = (initialState, setState) => {
+    let tempProducts = [];
+    if (Array.isArray(initialState)) {
+      initialState.forEach((product) => {
+        const eachProduct = { ...product };
+        tempProducts = [...tempProducts, eachProduct];
+      });
+    } else {
+      tempProducts = { ...initialState };
+    }
+    setState(tempProducts);
   };
 
-  const addToCart = () => {
-    console.log("hello from add to cart");
+  useEffect(() => {
+    populateState(storeProducts, setProducts);
+    populateState(detailProduct, setDetailProducts);
+  }, []);
+
+  const getItem = (id) => products.find((item) => item.id === id);
+
+  const handleDetail = (id) => {
+    const product = getItem(id);
+    setProduct(product);
+    return;
+  };
+
+  const addToCart = (id) => {
+    let tempProducts = [...products];
+    const index = tempProducts.indexOf(getItem(id));
+    const product = tempProducts[index];
+    product.count = 1;
+    const price = product.price;
+    product.total = price;
+    setProducts(tempProducts);
+    setCart(tempProducts);
+    console.log(cart);
+  };
+
+  const openModal = (id) => {
+    const product = this.getItem(id);
+    setModalProduct(product);
   };
 
   return (
@@ -30,6 +63,10 @@ function ProductProvider({ children }) {
         detailProduct: detailProducts,
         addToCart,
         handleDetail,
+        product,
+        cart,
+        modalOPen: true,
+        modalProduct: detailProduct,
       }}
     >
       {children}

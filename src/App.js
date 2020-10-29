@@ -8,6 +8,7 @@ import Cart from "./components/Cart/Cart";
 import Product from "./components/Products/Product";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar/Navbar";
+import Details from "./components/Detail/Details";
 
 function App() {
   return (
@@ -22,13 +23,12 @@ function App() {
             <Cart />
           </Route>
           <Route exact path="/product-info">
-            <Product />
+            <Details />
           </Route>
           <Route path="*">
             <NotFound />
           </Route>
         </Switch>
-        {/* <Footer /> */}
       </Router>
     </div>
   );

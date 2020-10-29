@@ -8,21 +8,13 @@ function Details() {
   return (
     <ProductConsumer>
       {(value) => {
-        const {
-          id,
-          company,
-          img,
-          info,
-          price,
-          title,
-          inCart,
-        } = value.detailProduct;
+        const { id, company, img, info, price, title, inCart } = value.product;
 
         console.log(value.detailProduct);
         return (
           <div className="container py-5">
             <div className="row">
-              <div calssName="col-10 mx-auto text-center text-slanted text-blue my-5">
+              <div className="col-10 mx-auto text-center text-slanted text-blue my-5">
                 <h1> {title}</h1>
               </div>
             </div>
@@ -52,6 +44,7 @@ function Details() {
                     <ButtonContainer>back to products</ButtonContainer>
                     <ButtonContainer
                       disabled={inCart ? true : false}
+                      cart={true}
                       onClick={() => value.addToCart(id)}
                     >
                       {inCart ? "inCart" : "add to cart"}
