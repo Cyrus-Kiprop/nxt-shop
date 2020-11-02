@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ButtonContainer } from "./Shared/Button";
-import { ProductConsumer, ProductContext } from "../context";
+import { ProductContext } from "../context";
 
 export default function Modal() {
   const value = useContext(ProductContext);

@@ -5,10 +5,10 @@ const ProductContext = createContext();
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState(() => storeProducts);
-  const [detailProducts, setDetailProducts] = useState(() => detailProduct);
+  const [detailProducts, setDetailProducts] = useState(() => detailProducts);
   const [product, setProduct] = useState({});
   const [cart, setCart] = useState(products);
-  const [modalProduct, setModalProduct] = useState();
+  const [modalProduct, setModalProduct] = useState(detailProduct);
   const [modalOpen, setModalOpen] = useState(false);
 
   // patch the state
@@ -74,13 +74,13 @@ function ProductProvider({ children }) {
     <ProductContext.Provider
       value={{
         products,
-        detailProduct: detailProducts,
+        detailProduct,
         addToCart,
         handleDetail,
         product,
         cart,
         modalOpen,
-        modalProduct: detailProduct,
+        modalProduct,
         handleCloseModal,
         handleOpenModal,
         getItem,

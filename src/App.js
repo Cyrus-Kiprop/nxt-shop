@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import ProductList from "./components/Products/ProductList";
 import Cart from "./components/Cart";
-import Product from "./components/Products/Product";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar/Navbar";
 import Details from "./components/Detail/Details";
