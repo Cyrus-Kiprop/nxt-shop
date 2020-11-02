@@ -9,7 +9,7 @@ function ProductProvider({ children }) {
   const [product, setProduct] = useState({});
   const [cart, setCart] = useState();
   const [modalProduct, setModalProduct] = useState();
-  const [modalOPen, setModalOpen] = useState();
+  const [modalOpen, setModalOpen] = useState(false);
 
   // patch the state
 
@@ -42,21 +42,22 @@ function ProductProvider({ children }) {
   const addToCart = (id) => {
     let tempProducts = [...products];
     const index = tempProducts.indexOf(getItem(id));
-    const product = tempProducts[index];
-    product.count = 1;
+    // const product = tempProducts[index];
+    const product = getItem(id);
+    // product.count = 1;
     const price = product.price;
     product.total = price;
     setProducts(tempProducts);
     setCart(tempProducts);
   };
 
-  const openModal = (id = 1) => {
+  const handleOpenModal = (id = 1) => {
     const product = getItem(id);
     setModalProduct(product);
     setModalOpen(true);
   };
 
-  const closeModal = () => setModalOpen(false);
+  const handleCloseModal = () => setModalOpen(false);
 
   return (
     <ProductContext.Provider
@@ -67,10 +68,10 @@ function ProductProvider({ children }) {
         handleDetail,
         product,
         cart,
-        modalOPen: true,
+        modalOpen,
         modalProduct: detailProduct,
-        closeModal,
-        openModal,
+        handleCloseModal,
+        handleOpenModal,
         getItem,
       }}
     >
@@ -81,4 +82,4 @@ function ProductProvider({ children }) {
 
 const ProductConsumer = ProductContext.Consumer;
 
-export { ProductProvider, ProductConsumer };
+export { ProductProvider, ProductConsumer, ProductContext };

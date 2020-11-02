@@ -1,51 +1,60 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ButtonContainer } from "./Shared/Button";
-import { ProductConsumer } from "../context";
+import { ProductConsumer, ProductContext } from "../context";
 
 export default function Modal() {
-  return (
-    <ProductConsumer>
-      {(value) => {
-        const { modalOpen, closeModal } = value;
-        const { img, title, price } = value.modalProduct;
+  const value = useContext(ProductContext);
+  const { modalOpen, handleCloseModal } = value;
+  const { img, title, price } = value.modalProduct;
+  console.log(value);
+  console.log(value.modalOpen);
+  return !modalOpen ? (
+    false
+  ) : (
+    <ModalWrapper>
+      <div className="container">
+        <div className="row">
+          <div
+            id="modaler"
+            className="col-8 mx-auto col-md col-lg-4 text-center text-capitalize"
+          >
+            <h5> item added to the cart</h5>
+            <img src={img} className="img-fluid" alt="product" />
+            <h5>{title}</h5>
+            <h5>price : $ {price}</h5>
 
-        if (!modalOpen) {
-          return null;
-        } else {
-          return (
-            <ModalContainer>
-              <div className="container">
-                <div calssName="row">
-                  <div
-                    id="modal "
-                    className="col-8 mx-auto col-md col-lg-4 text-center text-capitalize"
-                  >
-                    <h5> item added to the cart</h5>
-                  </div>
-                </div>
-              </div>
-            </ModalContainer>
-          );
-        }
-      }}
-    </ProductConsumer>
+            <Link to="/">
+              <ButtonContainer onClick={() => handleCloseModal()}>
+                store
+              </ButtonContainer>
+            </Link>
+            <Link to="/">
+              <ButtonContainer onClick={() => handleCloseModal()}>
+                go to cart
+              </ButtonContainer>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </ModalWrapper>
   );
 }
 
-const ModalContainer = styled.div`
-  position: fixed;
+const ModalWrapper = styled.div`
+  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.3)
+  background: rgba(0, 0, 0, 0.3) !important;
   display: flex;
   align-items: center;
   justify-contents: center;
-  #modal {
-      background: var(--mainWhite)
+
+  #modaler {
+    background-color: var(--mainWhite) !important;
   }
 `;

@@ -9,7 +9,6 @@ function Details() {
     <ProductConsumer>
       {(value) => {
         const { id, company, img, info, price, title, inCart } = value.product;
-        console.log(value);
         return (
           <div className="container py-5">
             <div className="row">
@@ -47,7 +46,7 @@ function Details() {
                     cart={true}
                     onClick={() => {
                       value.addToCart(id);
-                      value.openModal(id);
+                      value.handleOpenModal(id);
                     }}
                   >
                     {inCart ? "inCart" : "add to cart"}

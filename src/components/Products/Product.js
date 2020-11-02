@@ -25,8 +25,8 @@ export default function Product({ product }) {
                   className="cart-btn"
                   disabled={inCart ? true : false}
                   onClick={() => {
-                    value.addToCart(value.id);
-                    value.openModal(value.id);
+                    value.addToCart(id);
+                    value.handleOpenModal(id);
                   }}
                 >
                   {inCart ? (
