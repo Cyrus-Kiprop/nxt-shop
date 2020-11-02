@@ -31,7 +31,7 @@ export default function Modal() {
                 store
               </ButtonContainer>
             </Link>
-            <Link to="/">
+            <Link to="/cart">
               <ButtonContainer onClick={() => handleCloseModal()}>
                 go to cart
               </ButtonContainer>

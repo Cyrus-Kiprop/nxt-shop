@@ -7,7 +7,7 @@ function ProductProvider({ children }) {
   const [products, setProducts] = useState(() => storeProducts);
   const [detailProducts, setDetailProducts] = useState(() => detailProduct);
   const [product, setProduct] = useState({});
-  const [cart, setCart] = useState();
+  const [cart, setCart] = useState(products);
   const [modalProduct, setModalProduct] = useState();
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -42,19 +42,30 @@ function ProductProvider({ children }) {
   const addToCart = (id) => {
     let tempProducts = [...products];
     const index = tempProducts.indexOf(getItem(id));
-    // const product = tempProducts[index];
-    const product = getItem(id);
-    // product.count = 1;
+    const product = tempProducts[index];
+    product.count = 1;
     const price = product.price;
     product.total = price;
     setProducts(tempProducts);
-    setCart(tempProducts);
+    setCart([...cart, product]);
   };
 
   const handleOpenModal = (id = 1) => {
     const product = getItem(id);
     setModalProduct(product);
     setModalOpen(true);
+  };
+
+  const handleIncrement = () => {
+    console.log("Increment item");
+  };
+
+  const handleDecrement = (params) => {
+    console.log("Derement item");
+  };
+
+  const handleRemoveItem = (params) => {
+    console.log("Removed the item");
   };
 
   const handleCloseModal = () => setModalOpen(false);
@@ -73,6 +84,9 @@ function ProductProvider({ children }) {
         handleCloseModal,
         handleOpenModal,
         getItem,
+        handleIncrement,
+        handleDecrement,
+        handleRemoveItem,
       }}
     >
       {children}
